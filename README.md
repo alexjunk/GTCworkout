@@ -12,6 +12,8 @@ pompe = 1 pour pompe en marche, 0 pour pompe arrêtée
 
 V3V = 1 pour vanne 3 voies qui s'ouvre, -1 pour vanne 3 voies qui se ferme, 0 pour statut-quo
 
+c = course de la vanne (s ou ms)
+
 ## algorithme de pilotage des actionneurs d'un circuit de chauffage
 
 distribution | action
@@ -39,6 +41,3 @@ OFF | Text < 4 | pompe = 1
 OFF | Text < 4 & Tdep < 19 | V3V = 1
 OFF | Text < 4 & 19 <= Tdep <= 21 | V3V = 0
 OFF | Text < 4 & Tdep > 21 | V3V =-1
-
-
-comment sait-on que la vanne est totalement fermée ou totalement ouverte ?
