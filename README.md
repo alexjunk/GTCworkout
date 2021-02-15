@@ -14,7 +14,7 @@ V3V = 1 pour vanne 3 voies qui s'ouvre, -1 pour vanne 3 voies qui se ferme, 0 po
 
 ## algorithme de pilotage des actionneurs d'un circuit de chauffage
 
-situation de distribution | action
+distribution | action
 -- | --
 passage de ON à OFF | V3V = -1 puis pompe = 0
 pasage de ON à OFF | pompe = 1 puis V3V = 1
