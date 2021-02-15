@@ -10,7 +10,7 @@ Tdep = température de départ dans le circuit
 
 pompe = 1 pour pompe en marche, 0 pour pompe arrêtée
 
-V3V = 1 pour vanne 3 voies qui s'ouvre, -1 pour vanne 3 voies qui se ferme, 0 pour rien
+V3V = 1 pour vanne 3 voies qui s'ouvre, -1 pour vanne 3 voies qui se ferme, 0 pour statut-quo
 
 ## algorithme de fonctionnement d'un circuit de chauffage
 
