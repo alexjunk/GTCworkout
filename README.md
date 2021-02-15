@@ -36,9 +36,9 @@ Lorsqu'on ne chauffe pas et que le bâtiment n'est pas occupé, et s'il y a une 
 distribution | monitoring | action
 -- | -- | -- 
 OFF | Text < 4 | pompe = 1
-OFF | Tdep < 19 | V3V = 1
-OFF | 19 <= Tdep <= 21 | V3V = 0
-OFF | Tdep > 21 | V3V =-1
+OFF | Text < 4 & Tdep < 19 | V3V = 1
+OFF | Text < 4 & 19 <= Tdep <= 21 | V3V = 0
+OFF | Text < 4 & Tdep > 21 | V3V =-1
 
 
 comment sait-on que la vanne est totalement fermée ou totalement ouverte ?
