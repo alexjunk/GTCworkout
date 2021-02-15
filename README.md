@@ -14,15 +14,6 @@ V3V = 1 pour vanne 3 voies qui s'ouvre, -1 pour vanne 3 voies qui se ferme, 0 po
 
 ## algorithme de fonctionnement d'un circuit de chauffage
 
-distribution | monitoring | action
--- | -- | --
-OFF | Tdep > 30 | pompe = 1
-OFF | Tdep <= 30 | pompe = 0 
-ON ou OFF | Text < 4 | pompe = 1
-ON | Tdep < Tc-1 | V3V = 1
-ON | Tc-1 <= Tdep <= Tc+1 | V3V = 0
-ON | Tdep > Tc+1 | V3V =-1
-
 situation de distribution | action
 -- | --
 passage de ON à OFF | V3V = -1 puis pompe = 0
@@ -41,5 +32,13 @@ distribution | monitoring | action
 OFF | Tdep > 30 | pompe = 1
 OFF | Tdep <= 25 | pompe = 0 
 
-Lorsqu'on ne chauufe pas 
+Lorsqu'on ne chauffe pas et que le bâtiment n'est pas occupé, et s'il y a une vague de froid, on envoie de l'eau à 20°c pour maintenir le hors-gel
+distribution | monitoring | action
+-- | -- | -- 
+OFF | Text < 4 | pompe = 1
+OFF | Tdep < 19 | V3V = 1
+OFF | 19 <= Tdep <= 21 | V3V = 0
+OFF | Tdep > 21 | V3V =-1
 
+
+comment sait-on que la vanne est totalement fermée ou totalement ouverte ?
