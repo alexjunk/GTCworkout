@@ -12,7 +12,7 @@ pompe = 1 pour pompe en marche, 0 pour pompe arrêtée
 
 V3V = 1 pour vanne 3 voies qui s'ouvre, -1 pour vanne 3 voies qui se ferme, 0 pour statut-quo
 
-## algorithme de fonctionnement d'un circuit de chauffage
+## algorithme de pilotage des actionneurs d'un circuit de chauffage
 
 situation de distribution | action
 -- | --
@@ -30,7 +30,7 @@ Lorsqu'on ne chauffe pas, on maintient l'activité de la pompe jusqu'à ce que l
 distribution | monitoring | action
 -- | -- | --
 OFF | Tdep > 30 | pompe = 1
-OFF | Tdep <= 25 | pompe = 0 
+OFF | Text >=4 & Tdep <= 25 | pompe = 0 
 
 Lorsqu'on ne chauffe pas et que le bâtiment n'est pas occupé, et s'il y a une vague de froid, on envoie de l'eau à 20°c pour maintenir le hors-gel
 distribution | monitoring | action
