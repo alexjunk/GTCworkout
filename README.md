@@ -24,5 +24,6 @@ ON | Tc-1 <= Tdep <= Tc+1 | V3V = 0
 ON | Tdep > Tc+1 | V3V =-1
 
 situation | action
+-- | --
 passage de ON à OFF | V3V = -1 puis pompe = 0
 pasage de ON à OFF | pompe = 1 puis V3V = 1
