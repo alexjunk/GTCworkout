@@ -4,7 +4,7 @@
 
 Text = température extérieure
 
-Tc = température de consigne de l'eau pour la distribution
+Tc = température de consigne de l'eau
 
 Tdep = température de départ dans le circuit
 
@@ -28,7 +28,7 @@ situation de distribution | action
 passage de ON à OFF | V3V = -1 puis pompe = 0
 pasage de ON à OFF | pompe = 1 puis V3V = 1
 
-Lorsqu'on distribue de la chaleur, la pompe tourne et les vannes s'ouvrent ou se ferment pour réguler la rempérature de départ
+Lorsqu'on distribue de la chaleur, la pompe tourne et la vanne s'ouvre ou se ferme pour réguler la température de départ à +/-1°C autour de la température de consigne de l'eau 
 distribution | monitoring | action
 -- | -- | --
 ON | Tdep < Tc-1 | V3V = 1
