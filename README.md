@@ -4,6 +4,8 @@ http://gilles.thebault.free.fr/spip.php?article44
 
 https://github.com/WiringPi/WiringPi-Python
 
+https://github.com/alexandrecuer/tf_works/blob/master/BIOS/maquette/electricity%26al/relays.md
+
 # GTCworkout - pilotage des actionneurs d'un circuit de chauffage
 
 ## montage en mode mélange
