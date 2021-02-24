@@ -4,8 +4,13 @@ http://gilles.thebault.free.fr/spip.php?article44
 
 https://github.com/WiringPi/WiringPi-Python
 
-
 # GTCworkout - pilotage des actionneurs d'un circuit de chauffage
+
+## montage en mode mélange
+
+![](images/montage_relays_V3V_mélange.jpeg)
+
+![code](src/relay.py)
 
 ## cas d'une vanne TOR
 
