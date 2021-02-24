@@ -37,7 +37,7 @@ def readv3v(pin):
 
 def initv3v(pin):
     """
-    configure les 2 sorties pin et pin+1 en sortie
+    configure les relais pin et pin+1 en sortie
     sortie = 1 / entrée = 0
     """
     wiringpi.pinMode(pin,1)
