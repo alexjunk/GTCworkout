@@ -1,3 +1,10 @@
+On travaille avec un raspberry, pas avec un arduino
+
+http://gilles.thebault.free.fr/spip.php?article44
+
+https://github.com/WiringPi/WiringPi-Python
+
+
 # GTCworkout - pilotage des actionneurs d'un circuit de chauffage
 
 ## cas d'une vanne TOR
