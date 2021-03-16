@@ -14,6 +14,10 @@ https://github.com/alexandrecuer/tf_works/blob/master/BIOS/maquette/electricity%
 
 ![code](src/relay.py)
 
+```
+wget https://raw.githubusercontent.com/alexjunk/GTCworkout/main/src/relay.py
+```
+
 ## cas d'une vanne TOR
 
 ### notations
