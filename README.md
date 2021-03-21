@@ -6,6 +6,12 @@ https://github.com/WiringPi/WiringPi-Python
 
 https://github.com/alexandrecuer/tf_works/blob/master/BIOS/maquette/electricity%26al/relays.md
 
+Il faut avoir installé wiringPi
+
+```
+pip3 install wiringpi
+```
+
 # GTCworkout - pilotage des actionneurs d'un circuit de chauffage
 
 ## montage en mode mélange
