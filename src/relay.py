@@ -43,25 +43,35 @@ def initv3v(pin):
     wiringpi.pinMode(pin,1)
     wiringpi.pinMode(pin+1,1)
 
-def v3v(pin,sens,percent):
-    """
-    sens = 0 : fermerture
-    sens = 1 : ouverture
-    """
+def v3v(pin, sens, percent, run=1):
+    if run == 1:
+        stop = 0
+    else:
+        run = 0
+        stop = 1
     wiringpi.digitalWrite(pin,sens)
-    wiringpi.digitalWrite(pin+1,0)
+    wiringpi.digitalWrite(pin+1,run)
     wiringpi.delay(percent*course//100)
-    wiringpi.digitalWrite(pin+1,1)
+    wiringpi.digitalWrite(pin+1,stop)
+
+"""  
+relais acheté en 2020
+sens 1 = ouverture / sens 0 = fermeture
+relais achetés en 2021
+sens 1 = fermeture / sens 0 = ouverture
+"""
+ouvre = 0
+ferme = 1
 
 initv3v(0)
 #readv3v(0)
 
-# on ouvre totalement la vanne et on a la ferme de 40 %
-v3v(0,1,100)
-v3v(0,0,40)
+# on ouvre totalement la vanne
+v3v(0,ouvre,100)
+# on la ferme de 40%
+v3v(0,ferme,40)
 
-# on ferme totalement la vanne et on l'ouvre de 50%
-"""
-v3v(0,0,100)
-v3v(0,1,50)
-"""
+# on ferme totalement la vanne
+#v3v(0,ferme,100)
+# on l'ouvre de 50%
+#v3v(0,ouvre,50)
