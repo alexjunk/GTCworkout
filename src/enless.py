@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import serial
-#import binascii
+import binascii
 import time
 
 ser = serial.Serial(
@@ -13,9 +13,26 @@ ser = serial.Serial(
  timeout=1
 )
 
+deviceTypes = {
+               "0x1": "temperature",
+               "0x2": "temperature and humididity",
+               "0x3": "P100",
+               "0x4": "pulse",
+               "0x5": "energy meter",
+               "0x7": "modbus receiver",
+               "0x23": "contact",
+               "0x24": "CO2",
+               "0x25": "4-20mA analog",
+               "0x26": "0-5V analog",
+               "0x27": "0-10V analog"
+              }
+
+receiver = "21520921"
+
+
 while 1:
     x=ser.readline()
-    #y = binascii.b2a_hex(x)
+    y = binascii.b2a_hex(x)
     if len(x) :
         # on vérifie le premier et le dernier octet
         if hex(x[0]) == '0x68' and hex(x[-1]) == '0x16' :
@@ -24,6 +41,12 @@ while 1:
                 print("Enless frame received")
                 serNb = "{:02X}{:02X}{:02X}{:02X}".format(x[8],x[7],x[6],x[5])
                 print("Sensor {}".format(serNb))
+                # message
+                data = x[20:-2]
+                print(hex(data[0]))
+                mnb = hex(data[1])
+                print(deviceTypes[mnb])
+                print(y)
     time.sleep(1)
 
 ser.close()
