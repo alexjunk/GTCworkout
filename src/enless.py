@@ -15,7 +15,7 @@ ser = serial.Serial(
 
 deviceTypes = {
                "0x1": "temperature",
-               "0x2": "temperature and humididity",
+               "0x2": "temperature and humidity",
                "0x3": "P100",
                "0x4": "pulse",
                "0x5": "energy meter",
@@ -27,7 +27,19 @@ deviceTypes = {
                "0x27": "0-10V analog"
               }
 
-receiver = "21520921"
+rcv = [0x21, 0x52, 0x09, 0x21]
+
+def installPacket(tx, interval):
+    """
+    tx : paquet de données envoyé par le transmetteur
+    interval : intervalle en minutes entre 2 envois de données par le transmetteur 
+    """
+    txdata = tx[20:-2]
+    root = [0x7A, 0x1E, 0x00, 0x00, 0x00, 0x2f, 0x2f, 0x0F, 0x7F]
+    data = [0x11, txdata[1], 0x01, tx[5], tx[6], tx[7], tx[8], interval, 0x00, rcv[3], rcv[2], rcv[1], rcv[0]]
+    l = len(root) + len(data)
+    packet = serial.to_bytes([l, *root, *data])
+    print(binascii.b2a_hex(packet))
 
 
 while 1:
@@ -46,6 +58,8 @@ while 1:
                 print(hex(data[0]))
                 mnb = hex(data[1])
                 print(deviceTypes[mnb])
+                installPacket(x,5)
+                print(x)
                 print(y)
     time.sleep(1)
 
