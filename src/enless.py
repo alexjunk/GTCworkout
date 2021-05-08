@@ -81,7 +81,7 @@ while 1:
                 if data[0] in [0x01,0x02,0x03,0x04,0x23,0x24,0x25,0x26,0x27] :
                     print("got a measurement")
                     if data[1] in [0x01,0x02]:
-                        temp = int.from_bytes(data[3:5], byteorder='little')/10
+                        temp = int.from_bytes(data[3:5], byteorder='little', signed=True)/10
                         print("temperature is {:.1f}".format(temp))
                     if data[1] == 0x02:
                         rh = int.from_bytes(data[5:7], byteorder='little')/10
