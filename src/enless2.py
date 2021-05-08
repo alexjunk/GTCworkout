@@ -90,7 +90,7 @@ def get():
 def decodeMeasure(data):
     print("decoding a measurement")
     if data[1] in [0x01,0x02]:
-        temp = int.from_bytes(data[3:5], byteorder='little')/10
+        temp = int.from_bytes(data[3:5], byteorder='little', signed=True)/10
         print("temperature is {:.1f}".format(temp))
     if data[1] == 0x02:
         rh = int.from_bytes(data[5:7], byteorder='little')/10
