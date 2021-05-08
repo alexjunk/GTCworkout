@@ -63,7 +63,7 @@ while 1:
     print(y)
     if len(x) :
         # on vérifie le premier et le dernier octet
-        if hex(x[0]) == '0x68' and hex(x[-1]) == '0x16' :
+        if x[0] == 0x68 and x[-1] == 0x16 :
             # x[1] doit être égal à la taille du paquet, moins 3 octets (lui-même, start et stop)
             if x[1] == len(x) - 3 :
                 serNb = "{:02X}{:02X}{:02X}{:02X}".format(x[8],x[7],x[6],x[5])
