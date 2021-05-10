@@ -4,8 +4,11 @@ import serial
 import binascii
 import time
 
+port = "/dev/ttyUSB0"
+#port = "/dev/ttyAMA0"
+
 ser = serial.Serial(
- port='/dev/ttyAMA0',
+ port = port,
  baudrate = 19200,
  parity=serial.PARITY_NONE,
  stopbits=serial.STOPBITS_ONE,
@@ -17,50 +20,14 @@ print(ser.is_open)
 
 verbose = True
 
+# l'adresse du receiver
 rcv = [0x21, 0x52, 0x09, 0x21]
 
-def install(frame, interval):
-    """
-    frame : enless frame sans les 2 premiers octets et sans le dernier (0x16)
-    interval : intervalle en minutes entre 2 envois de données par le transmetteur
-    """
-    root = bytearray([0x7A, 0x01, 0x00, 0x00, 0x00, 0x2f, 0x2f, 0x0F, 0x7F])
-    data = bytearray([0x11, frame[19], 0x01, *frame[3:7][::-1], interval, 0x00, *rcv[::-1]])
-    # cf partie 4 - with enless receiver
-    l = len(root) + len(data)
-    message = bytearray([l, *root, *data])
-    # cf partie 3 - over the air
-    """
-    m = bytearray([0x44, 0x24, 0x48, *frame[3:9], *root, *data, 0x4D])
-    l = len(m)
-    message = bytearray([0x68, l, *m, 0x16])
-    """
-    if verbose:
-        #print([hex(x) for x in message])
-        print(binascii.b2a_hex(message))
-    try :
-        ser.flushOutput()
-        n = ser.write(message)
-        ser.write(b'\n')
-    except IOError as e:
-        print("ERROR {}".format(e))
-    finally:
-        print("wrote {} bytes on the serial port".format(n))
-        #ser.flush()
+# la racine des messages enless, depuis le M field jusqu'au VIF byte
+root = bytearray([0x7A, 0x01, 0x00, 0x00, 0x00, 0x2f, 0x2f, 0x0F, 0x7F])
 
-def installb():
-    """
-    just a test
-    """
-    try :
-        n = ser.write("167a010000002f2f0f7f11020112220760050021095221".encode('utf-8'))
-    except IOError as e:
-        print("ERROR {}".format(e))
-    finally:
-        print("wrote {} bytes on the serial port".format(n))
-
-# mode 0 : avec get()
-# sinon on utilise readline()
+# mode 0 : implémente get()
+# mode différent de 0 : implémente readline()
 mode = 0
 
 def get():
@@ -87,7 +54,62 @@ def get():
             if x[1] == len(x) - 3 :
                 return x[2:-1]
 
+def send(message):
+    """
+    write a payload message on the serial port
+    """
+    if verbose:
+        #print([hex(x) for x in message])
+        print(binascii.b2a_hex(message))
+    try :
+        ser.flushOutput()
+        n = ser.write(message)
+        #ser.write(b'\n')
+    except IOError as e:
+        print("ERROR {}".format(e))
+    finally:
+        print("wrote {} bytes on the serial port".format(n))
+        #ser.flush()
+
+def install(frame, interval):
+    """
+    installation packet to be send by the receiver
+
+    frame : enless frame sans les 2 premiers octets et sans le dernier (0x16)
+
+    interval : intervalle en minutes entre 2 envois de données par le transmetteur
+    """
+    data = bytearray([0x11, frame[19], 0x01, *frame[3:7][::-1], interval, 0x00, *rcv[::-1]])
+    # cf partie 4 - with enless receiver
+    l = len(root) + len(data)
+    message = bytearray([l, *root, *data])
+    # cf partie 3 - over the air
+    """
+    m = bytearray([0x44, 0x24, 0x48, *frame[3:9], *root, *data, 0x4D])
+    l = len(m)
+    message = bytearray([0x68, l, *m, 0x16])
+    """
+    print("going to send the installation packet")
+    send(message)
+
+def RSSIresponse(frame, nb=0x01):
+    """
+    installation packet to be send by the receiver
+
+    frame : enless frame sans les 2 premiers octets et sans le dernier (0x16)
+    """
+    data = bytearray([0x15, frame[19], nb, *frame[3:7][::-1], frame[-1]])
+    l = len(root) + len(data)
+    message = bytearray([l, *root, *data])
+    print("going to send the RSSI response {:02x}".format(nb))
+    send(message)
+
 def decodeMeasure(data):
+    """
+    decode un message périodique de données
+
+    data : enless "data" message commencant juste après le VIF byte et s'arrêtant au RSSI byte
+    """
     print("decoding a measurement")
     if data[1] in [0x01,0x02]:
         temp = int.from_bytes(data[3:5], byteorder='little', signed=True)/10
@@ -103,19 +125,27 @@ while 1:
         print("****************************************")
         print(binascii.b2a_hex(frame))
         data = frame[18:-1]
-        print(binascii.b2a_hex(data))
-        rssi = frame[-1]/2
-        print("rssi is {:.1f}".format(rssi))
-        txid = frame[3:7][::-1]
-        txidstr = "{:02x}{:02x}{:02x}{:02x}".format(txid[0],txid[1],txid[2],txid[3])
-        if data[0] == 0x10 :
-            print("Installation request coming from {}".format(txidstr))
-            install(frame,5)
-            #installb()
-        if data[0] == 0x12:
-            print("got the ACK")
-        if data[0] in [0x01,0x02,0x03,0x04,0x23,0x24,0x25,0x26,0x27] :
-            decodeMeasure(data)
+        # on vérifie qu'on a bien l signature d'un enless frame
+        if frame[0] == 0x44 and frame[1] == 0xae and frame[2]==0x0c:
+            print("enless frame")
+            print("data is {}".format(binascii.b2a_hex(data)))
+            rssi = frame[-1]/2
+            print("rssi is {:.1f}".format(rssi))
+            txid = frame[3:7][::-1]
+            txidstr = "{:02x}{:02x}{:02x}{:02x}".format(txid[0],txid[1],txid[2],txid[3])
+            if data[0] == 0x10 :
+                print("Installation request coming from {}".format(txidstr))
+                install(frame,5)
+            if data[0] == 0x12:
+                print("got the ACK")
+                RSSIresponse(frame)
+            if data[0] == 0x14:
+                print("got the install RSSI flag")
+                RSSIresponse(frame, nb=data[2])
+            if data[0] == 0x16:
+                print("INSTALLATION COMPLETED WITH SUCCESS")
+            if data[0] in [0x01,0x02,0x03,0x04,0x23,0x24,0x25,0x26,0x27] :
+                decodeMeasure(data)
     time.sleep(1)
 
 ser.close()
