@@ -93,7 +93,7 @@ class Enless:
 
     def install(self, iframe, interval):
         """
-        installation packet to be send by the receiver
+        installation packet the receiver has to send
 
         iframe : enless incomingframe sans les 2 premiers octets et sans le dernier (0x16)
 
@@ -114,7 +114,7 @@ class Enless:
 
     def RSSIresponse(self, iframe, nb=0x01):
         """
-        installation packet to be send by the receiver
+        RSSI response of the receiver to a 0x12 or 0x14 packet incoming from a transmitter
 
         iframe : enless incomingframe sans les 2 premiers octets et sans le dernier (0x16)
         """
