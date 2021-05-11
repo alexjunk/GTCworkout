@@ -16,10 +16,6 @@ rcv = [0x21, 0x52, 0x09, 0x21]
 # la racine des messages enless, depuis le M field jusqu'au VIF byte
 root = bytearray([0x7A, 0x01, 0x00, 0x00, 0x00, 0x2f, 0x2f, 0x0F, 0x7F])
 
-# mode 0 : implémente get()
-# mode différent de 0 : implémente readline()
-mode = 0
-
 def decodeMeasure(data):
     """
     decode un message périodique de données
@@ -47,32 +43,30 @@ class Enless:
             timeout=1,
             write_timeout=1
             )
+        self._start = int(time.time())
+        self._ts = self._start
         if self._ser.is_open:
             print("port série ouvert")
 
     def get(self):
         """
-        return the enless frame
+        alternative à l'utilisation de readline()
         """
-        while not self._exit:
-          if mode == 0 :
-            # we read a byte
-            a = self._ser.read()
-            # if the byte is 0x68, we have a packet
-            if a and a[0] == 0x68:
-                # we read one more byte to get the length
-                b = self._ser.read()
-                # we read the packet plus the x16 and return
-                c = self._ser.read(b[0]+1)
-                if c[-1] == 0x16:
-                    return c[:-1]
-          else :
-            x = self._ser.readline()
-            if x :
-              if x[0] == 0x68 and x[-1] == 0x16 :
-                # x[1] doit être égal à la taille du paquet, moins 3 octets (lui-même, start et stop)
-                if x[1] == len(x) - 3 :
-                    return x[2:-1]
+        read = bytearray()
+        # we read a byte
+        a = self._ser.read()
+        # if the byte is 0x68, we have a packet
+        if a and a[0] == 0x68:
+          read.append(a)
+          # we read one more byte to get the length
+          b = self._ser.read()
+          read.append(b)
+          # we read the packet plus the x16 and return
+          c = self._ser.read(b[0]+1)
+          if c[-1] == 0x16:
+            read.extend(c)
+        return bytes(read)
+
 
     def send(self,message):
         """
@@ -129,13 +123,17 @@ class Enless:
         signal.signal(signal.SIGTERM, self._sigint_handler)
         while not self._exit :
           if self._ser.is_open :
-            iframe = self.get()
-            if iframe:
-                print("****************************************")
-                print(binascii.b2a_hex(iframe))
-                data = iframe[18:-1]
-                # on vérifie qu'on a bien la signature d'un enless frame
-                if iframe[0] == 0x44 and iframe[1] == 0xae and iframe[2]==0x0c:
+            x = self._ser.readline()
+            if x :
+              if x[0] == 0x68 and x[-1] == 0x16 :
+                # x[1] doit être égal à la taille du paquet, moins 3 octets (lui-même, start et stop)
+                if x[1] == len(x) - 3 :
+                  iframe = x[2:-1]
+                  print("****************************************")
+                  print(binascii.b2a_hex(iframe))
+                  data = iframe[18:-1]
+                  # on vérifie qu'on a bien la signature d'un enless frame
+                  if iframe[0] == 0x44 and iframe[1] == 0xae and iframe[2]==0x0c:
                     print("enless frame")
                     print("data is {}".format(binascii.b2a_hex(data)))
                     rssi = iframe[-1]/2
@@ -154,7 +152,11 @@ class Enless:
                     if data[0] == 0x16:
                         print("INSTALLATION COMPLETED WITH SUCCESS")
                     if data[0] in [0x01,0x02,0x03,0x04,0x23,0x24,0x25,0x26,0x27] :
+                        now = int(time.time())
+                        age = now -self._ts
+                        print("age du précédant paquet {} s".format(age))
                         decodeMeasure(data)
+                        self._ts = now
           time.sleep(0.2)
 
     def _sigint_handler(self, signal, frame):
@@ -163,7 +165,6 @@ class Enless:
         """
         print("signal de fermeture reçu")
         self._exit = True
-
 
     def close(self):
         """
