@@ -4,6 +4,8 @@ import serial
 import binascii
 import time
 import signal
+import paho.mqtt.client as mqtt
+import json
 
 #port = "/dev/ttyUSB0"
 port = "/dev/ttyAMA0"
@@ -16,6 +18,11 @@ rcv = [0x21, 0x52, 0x09, 0x21]
 # la racine des messages enless, depuis le M field jusqu'au VIF byte
 root = bytearray([0x7A, 0x01, 0x00, 0x00, 0x00, 0x2f, 0x2f, 0x0F, 0x7F])
 
+mqtt_user = "emonpi"
+mqtt_passwd = "emonpimqtt2016"
+mqtt_host = "127.0.0.1"
+mqtt_port = 1883
+
 def decodeMeasure(data):
     """
     decode un message périodique de données
@@ -23,12 +30,16 @@ def decodeMeasure(data):
     data : enless "data" message commencant juste après le VIF byte et s'arrêtant au RSSI byte
     """
     print("decoding a measurement")
+    payload = {}
     if data[1] in [0x01,0x02]:
         temp = int.from_bytes(data[3:5], byteorder='little', signed=True)/10
+        payload["temp"] = temp
         print("temperature is {:.1f}".format(temp))
     if data[1] == 0x02:
         rh = int.from_bytes(data[5:7], byteorder='little')/10
+        payload["rh"] = rh
         print("humidity is {:.1f}".format(rh))
+    return payload
 
 class Enless:
     def __init__(self, interval):
@@ -47,6 +58,8 @@ class Enless:
         self._ts = self._start
         if self._ser.is_open:
             print("port série ouvert")
+        self._mqttc = mqtt.Client()
+        self._mqttc.username_pw_set(mqtt_user, mqtt_passwd)
 
     def get(self):
         """
@@ -67,6 +80,20 @@ class Enless:
             read.extend(c)
         return bytes(read)
 
+    def publishToMQTT(self, node, payload):
+        try:
+          self._mqttc.connect(mqtt_host, mqtt_port, 60)
+        except Exception:
+          print("Could not connect to MQTT")
+        else:
+          #value = random.randint(1, 500)
+          print("Connected to MQTT and sending to node {}".format(node))
+          #mqttc.publish("emon/test/t3",value)
+          #payload = {"t1": 123, "t2":value, "rssi":12}
+          payloadJSON = json.dumps(payload)
+          result = self._mqttc.publish("emon/{}".format(node), payloadJSON)
+          print(result)
+          self._mqttc.disconnect()
 
     def send(self,message):
         """
@@ -155,7 +182,9 @@ class Enless:
                         now = int(time.time())
                         age = now -self._ts
                         print("age du précédant paquet {} s".format(age))
-                        decodeMeasure(data)
+                        payload = decodeMeasure(data)
+                        print(payload)
+                        self.publishToMQTT(txidstr, payload)
                         self._ts = now
           time.sleep(0.2)
 
