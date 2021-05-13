@@ -15,3 +15,8 @@ pour donner à l'utilisateur les privilèges sur le port série :
 ```
 sudo usermod -a -G dialout,tty alexandrecuer
 ```
+
+pour tester le client mosquitto en ligne de commande :
+```
+sudo apt-get install mosquitto-clients
+```
