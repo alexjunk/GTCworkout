@@ -8,6 +8,8 @@ http://raspberrypi.tomasgreno.cz/uart-to-rs-232.html
 
 https://www.framboise314.fr/le-port-serie-du-raspberry-pi-3-pas-simple/
 
+https://www.raspberrypi.org/forums/viewtopic.php?t=227262
+
 # pyserial
 
 https://github.com/pyserial/pyserial/issues/216
