@@ -22,7 +22,6 @@ ser.close()
 import socket
 host = "192.168.2.1"
 port = 5000
-size = 1024
 
 
 while 1:
