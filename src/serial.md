@@ -28,6 +28,8 @@ https://www.framboise314.fr/le-port-serie-du-raspberry-pi-3-pas-simple/
 
 https://www.raspberrypi.org/forums/viewtopic.php?t=227262
 
+https://shop.pimoroni.com/products/sparkfun-logic-level-converter-bi-directional?variant=7493045377&gclid=Cj0KCQiA28nfBRCDARIsANc5BFAm7wGhlbJO5A5mZOI8QFFKe7owqakjZUTTClwRSp6LfRstb-ffz-oaAgOOEALw_wcB
+
 # pyserial
 
 https://github.com/pyserial/pyserial/issues/216
