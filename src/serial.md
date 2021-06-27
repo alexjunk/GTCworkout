@@ -32,6 +32,8 @@ https://shop.pimoroni.com/products/sparkfun-logic-level-converter-bi-directional
 
 https://learn.sparkfun.com/tutorials/bi-directional-logic-level-conter-hookup-guide
 
+https://learn.sparkfun.com/tutorials/voltage-dividers/all
+
 # pyserial
 
 https://github.com/pyserial/pyserial/issues/216
