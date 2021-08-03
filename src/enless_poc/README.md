@@ -4,7 +4,7 @@ python3 -m serial.tools.list_ports
 1 ports found
 ```
 
-***UTILISER LE PORT USB***
+***AOUT 2021 : UTILISER LE PORT USB***
 
 `dtoverlay = pi3-disable-bt` rajouté dans /boot/config.txt
 
