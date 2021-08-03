@@ -4,6 +4,8 @@ python3 -m serial.tools.list_ports
 1 ports found
 ```
 
+***UTILISER LE PORT USB***
+
 `dtoverlay = pi3-disable-bt` rajouté dans /boot/config.txt
 
 `enable_uart = 1` pas rajouté à /boot/config.txt
