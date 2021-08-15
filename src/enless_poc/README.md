@@ -40,4 +40,6 @@ https://learn.sparkfun.com/tutorials/voltage-dividers/all
 
 https://github.com/pyserial/pyserial/issues/216
 
+https://github.com/pyserial/pyserial/issues/318
+
 https://stackoverflow.com/questions/29557353/how-can-i-improve-pyserial-read-speed/56240817#56240817
