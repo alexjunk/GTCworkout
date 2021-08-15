@@ -43,3 +43,11 @@ https://github.com/pyserial/pyserial/issues/216
 https://github.com/pyserial/pyserial/issues/318
 
 https://stackoverflow.com/questions/29557353/how-can-i-improve-pyserial-read-speed/56240817#56240817
+
+https://en.m.wikipedia.org/wiki/Serial_Peripheral_Interface
+
+http://bts2m.free.fr/TP_Arduino/01_UART.html
+
+https://docs.python.org/3/howto/sockets.html
+
+https://docs.python.org/fr/3/library/socket.html?highlight=sockets#socket.socket.settimeout
