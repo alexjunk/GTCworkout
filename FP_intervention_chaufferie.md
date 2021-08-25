@@ -12,6 +12,7 @@ exemple avec les cables rouge et noir de la vanne :
 - au niveau de la vanne, on relie la sonde rouge de l'ohmètre au cable rouge de la vanne et la sonde noire au cable noir de la vanne
 
 si on a OL : pas continuité, ce ne sont pas les bons cables !
+
 si on a 0 et/ou buzz : continuité
 
 https://fr.ifixit.com/Tutoriel/Comment+utiliser+un+multim%C3%A8tre/25632#s64999
