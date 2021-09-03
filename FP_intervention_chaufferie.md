@@ -1,4 +1,4 @@
-# identifier l'arrivée d'une vanne 3 voie sur un tableau électrique
+# identifier l'arrivée d'une vanne 3 voies sur un tableau électrique
 
 0) identifier l'arrivée du cable de la vanne dans le tableau, en utilisant les plans à disposition ou les numéros de cable s'il y en aux 2 extrémités des cables (un numéro côté armoire et un numéro côté actionneur)
 1) s'assurer que la vanne n'est pas alimentée
