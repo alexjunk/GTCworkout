@@ -1,5 +1,4 @@
 import wiringpi
-import time
 
 wiringpi.wiringPiSetup()
 
