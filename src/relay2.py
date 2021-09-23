@@ -4,8 +4,9 @@ import time
 wiringpi.wiringPiSetup()
 
 """
-work in progress
-pilotage d'une vanne 3 voie
+code pour prétests en chaufferie afin de connecter la vanne dans le bon sens
+status : work in progress
+pilotage d'une vanne 3 voies
 r2 - pin+1 : relais de commande on/off avec timer
 r1 - pin : relais pour le choix du sens (ouverture/fermeture)
 """
