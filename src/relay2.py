@@ -13,8 +13,9 @@ r1 - pin : relais pour le choix du sens (ouverture/fermeture)
 # course pour une vanne SAX31 de chez Siemens
 course = 150000
 # sens
-ouvre = 0
-ferme = 1
+# qd action vaut 1, on chauffe, qd action vaut 0, on coupe le chauffage
+ouvre = 1
+ferme = 0
 
 def initv3v(pin):
     """
@@ -24,11 +25,17 @@ def initv3v(pin):
     wiringpi.pinMode(pin,1)
     wiringpi.pinMode(pin+1,1)
 
+import click
+@click.command()
+@click.option('--pin', type=int, prompt='numéro du relais')
+@click.option('--sens', type=int, prompt='sens/action : 1=chauffage 0=pas de chauffage')
+@click.option('--percent', type=int, prompt='% de la course à appliquer')
 def v3v(pin, sens, percent):
     """
     définit le sens de fonctionnement
     manoeuvre la vanne jusqu'à un certain pourcentage
     """
+    initv3v(pin)
     wiringpi.digitalWrite(pin, 0)
     wiringpi.digitalWrite(pin+1, 0)
     wiringpi.digitalWrite(pin, sens)
@@ -37,8 +44,5 @@ def v3v(pin, sens, percent):
     wiringpi.digitalWrite(pin+1, 0)
     wiringpi.digitalWrite(pin, 0)
 
-initv3v(0)
-# on ferme la vanne complètement
-v3v(0,ferme,100)
-# on ouvre la vanne à 40%
-v3v(0,ouvre,40)
+if __name__ == "__main__":
+    v3v()
