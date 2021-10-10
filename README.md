@@ -38,13 +38,13 @@ Tdep = température de départ dans le circuit
 
 pompe = 1 pour pompe en marche, 0 pour pompe arrêtée
 
-V3V = 1 pour vanne 3 voies en position ouverte, -1 pour vanne 3 voies en position fermée
+V3V = 1 pour vanne 3 voies en position ouverte, 0 pour vanne 3 voies en position fermée
 
 ## algorithme
 
 distribution | action
 -- | --
-passage de ON à OFF | V3V = -1 puis pompe = 0
+passage de ON à OFF | V3V = 0 puis pompe = 0
 passage de ON à OFF | pompe = 1 puis V3V = 1
 
 Lorsqu'on ne chauffe pas, on maintient l'activité de la pompe jusqu'à ce que le circuit ne distribue plus de chaleur 
@@ -58,4 +58,4 @@ distribution | monitoring | action
 -- | -- | -- 
 OFF | Text < 4 | pompe = 1
 OFF | Text < 4 & Tdep < 19 | V3V = 1
-OFF | Text < 4 & Tdep > 21 | V3V =-1
+OFF | Text < 4 & Tdep > 21 | V3V = 0
