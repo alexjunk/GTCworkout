@@ -1,4 +1,4 @@
-On travaille avec un raspberry, pas avec un arduino
+On travaille avec un raspberry, pas avec un arduino. On n'est pas à la recherche de performances temps réelle.
 
 http://gilles.thebault.free.fr/spip.php?article44
 
