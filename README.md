@@ -45,9 +45,9 @@ V3V = 1 pour vanne 3 voies en position ouverte, 0 pour vanne 3 voies en position
 distribution | action
 -- | --
 passage de ON à OFF | V3V = 0 puis pompe = 0
-passage de ON à OFF | pompe = 1 puis V3V = 1
+passage de OFF à ON | V3V = 1 puis pompe = 1
 
-Lorsqu'on ne chauffe pas, on maintient l'activité de la pompe jusqu'à ce que le circuit ne distribue plus de chaleur 
+Lorsqu'on ne chauffe pas, on peut maintenir l'activité de la pompe jusqu'à ce que la chaleur du circuit se soit dissipée. Mais ce n'est pas très utile en pratique.
 distribution | monitoring | action
 -- | -- | --
 OFF | Tdep > 30 | pompe = 1
