@@ -18,10 +18,10 @@ pip3 install wiringpi
 
 ![](images/montage_relays_V3V_mélange.jpeg)
 
-[code](src/relay.py)
+[code](src/relay2.py)
 
 ```
-wget https://raw.githubusercontent.com/alexjunk/GTCworkout/main/src/relay.py
+wget https://raw.githubusercontent.com/alexjunk/GTCworkout/main/src/relay2.py
 ```
 
 ## cas d'une vanne TOR
