@@ -4,19 +4,17 @@ https://www.sonelec-musique.com/electronique_theorie_relais.html
 
 http://sorel80.free.fr/Electrotechnique/CalculdescourantsdeCourtcircuit.htm
 
-https://www.studentcompanion.net/fr/fabriquer-shield-arduino-relais-debut-a-la-fin/
+# les composants électroniques - état de l'art
+
+https://fr.wikipedia.org/wiki/Symbole_%C3%A9lectronique
+
+https://fr.wikipedia.org/wiki/Transistor
 
 W203 128T : potentiomètre
 
 25V220 : capacité
 
 NE555P DNSX19 : timer Texas instrument
-
-# les composants électroniques - état de l'art
-
-https://fr.wikipedia.org/wiki/Symbole_%C3%A9lectronique
-
-https://fr.wikipedia.org/wiki/Transistor
 
 # Automate Ethernet avec relais
 
