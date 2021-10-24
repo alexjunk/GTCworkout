@@ -12,7 +12,7 @@ pip3 install wiringpi
 
 # pilotage des actionneurs d'un circuit de chauffage
 
-## montage en mode mélange
+## montage d'une vanne en mode mélange
 
 ![](images/montage_relays_V3V_mélange.jpeg)
 
