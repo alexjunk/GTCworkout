@@ -25,6 +25,8 @@ wget https://raw.githubusercontent.com/alexjunk/GTCworkout/main/src/relay2.py
 
 http://sarakha63-domotique.fr/jeedom-domotiser-une-vanne-3-voies/
 
+https://hackingathome.com/2017/02/07/danfoss-wireless-thermostat-hacking-part-two/
+
 # PID - contrôle temps réel
 
 https://github.com/imax9000/Arduino-PID-Library
