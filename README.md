@@ -31,6 +31,8 @@ https://github.com/imax9000/Arduino-PID-Library
 
 http://brettbeauregard.com/blog/2011/04/improving-the-beginners-pid-introduction/
 
+https://www.rocketscream.com/blog/
+
 https://www.abcclim.net/regulation-p-pi-pid.html
 
 http://www.ferdinandpiette.com/blog/2011/08/implementer-un-pid-sans-faire-de-calculs/
