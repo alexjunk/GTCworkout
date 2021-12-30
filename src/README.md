@@ -15,7 +15,7 @@ mosquitto_pub -t 'emon/test/t3' -m 12
 
 # uart
 
-J'ai à un moment pensé que pour utiliser BIOS avec son récepteur radio branché sur le port USB, et pouvoir commander des relais sans avoir d'interférences, il convenait de désactiver l'uart qui est sur ttyAMA0
+J'ai à un moment pensé que pour utiliser BIOS avec son récepteur radio branché sur le port USB, et pouvoir commander des relais sans avoir d'interférences avec le récpeteur enless, il convenait de désactiver l'uart qui est sur ttyAMA0
 
 Pour y parvenir :
 ```
@@ -32,4 +32,4 @@ on doit avoir comme retour :
 1 port found
 ```
 
-toutefois, le problème semble plutôt venir de la carte relais : il faut prendre des cartes relais avec photocoupleur.
+toutefois, le problème semble plutôt venir de la carte relais (photocoupleur). En éloignant la carte relais du récepteur, on n'a pas d'interférences
