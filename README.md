@@ -1,4 +1,8 @@
-On travaille avec un raspberry, pas avec un arduino. On n'est pas à la recherche de performances temps réel.
+On travaille avec un raspberry, pas avec un arduino. 
+
+On n'est pas à la recherche de performances temps réel.
+
+https://www.circuits.dk/everything-about-raspberry-gpio/
 
 http://gilles.thebault.free.fr/spip.php?article44
 
