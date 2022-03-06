@@ -46,6 +46,8 @@ RF69 on a RPI : https://jeelabs.org/2015/05/20/rfm69-on-raspberry-pi/index.html
 
 https://github.com/sui77/rc-switch
 
+rcswitch with rfm12 : https://jeelabs.org/forum/node/1472.html and https://jeelabs.org/forum/files/RFM12B_Receive_RC_switch.pde
+
 ## logiciel gqrx
 
 https://github.com/gqrx-sdr/gqrx , exploitant des récepteurs qu'on peut connecter au port usb du PC, cf https://www.sdrplay.com/
