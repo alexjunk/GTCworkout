@@ -40,6 +40,12 @@ the library : https://github.com/jeelabs/jeelib
 
 la doc : https://jeelabs.org/pub/docs/jeelib/files.html
 
+RF69 on a RPI : https://jeelabs.org/2015/05/20/rfm69-on-raspberry-pi/index.html
+
+## rcswitch
+
+https://github.com/sui77/rc-switch
+
 ## logiciel gqrx
 
 https://github.com/gqrx-sdr/gqrx , exploitant des récepteurs qu'on peut connecter au port usb du PC, cf https://www.sdrplay.com/
