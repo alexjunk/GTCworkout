@@ -43,6 +43,16 @@ logiciel gqrx : https://github.com/gqrx-sdr/gqrx , exploitant des récepteurs qu
 
 https://gqrx.dk/supported-hardware#fcd
 
+utilisant le GPIO du raspberry comme antenne : https://github.com/F5OEO/rpitx
+
+What is a band pass filter and why do I need it to use rpitx with an antenna? https://groups.io/g/rpitx/topic/what_is_a_band_pass_filter/29595643?p=
+
+doc : https://www.rtl-sdr.com/wp-content/uploads/2016/12/ASK_erhard_e_tutorial.pdf?ffccfa&ffccfa
+
+reverse engineering of a davis meteo station : http://madscientistlabs.blogspot.com/search?q=davis
+
+
+
 # PID - contrôle temps réel
 
 https://github.com/imax9000/Arduino-PID-Library
