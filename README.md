@@ -29,11 +29,10 @@ wget https://raw.githubusercontent.com/alexjunk/GTCworkout/main/src/relay2.py
 
 http://sarakha63-domotique.fr/jeedom-domotiser-une-vanne-3-voies/
 
-https://hackingathome.com/2017/02/07/danfoss-wireless-thermostat-hacking-part-two/
 
-## produits radio
+# produits radio
 
-### jeelab
+## jeelab
 
 https://jeelabs.org/ avec un magasin en ligne : https://www.digitalsmarties.net/
 
@@ -41,13 +40,13 @@ the library : https://github.com/jeelabs/jeelib
 
 la doc : https://jeelabs.org/pub/docs/jeelib/files.html
 
-### logiciel gqrx
+## logiciel gqrx
 
 https://github.com/gqrx-sdr/gqrx , exploitant des récepteurs qu'on peut connecter au port usb du PC, cf https://www.sdrplay.com/
 
 https://gqrx.dk/supported-hardware#fcd
 
-### rpitx
+## rpitx
 
 utilisant le GPIO du raspberry comme antenne : https://github.com/F5OEO/rpitx
 
@@ -56,11 +55,15 @@ What is a band pass filter and why do I need it to use rpitx with an antenna? ht
 doc : https://www.rtl-sdr.com/wp-content/uploads/2016/12/ASK_erhard_e_tutorial.pdf?ffccfa&ffccfa
 
 
-## reverse engineering 
+# reverse engineering 
 
-### of a davis meteo station
+## of a davis meteo station
 
 http://madscientistlabs.blogspot.com/search?q=davis
+
+## d'un thermostat de chaudière pour maison individuelle
+
+https://hackingathome.com/2017/02/07/danfoss-wireless-thermostat-hacking-part-two/
 
 
 
