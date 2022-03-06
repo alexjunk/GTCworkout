@@ -37,9 +37,9 @@ https://hackingathome.com/2017/02/07/danfoss-wireless-thermostat-hacking-part-tw
 
 https://jeelabs.org/ avec un magasin en ligne : https://www.digitalsmarties.net/
 
-https://jeelabs.org/pub/docs/jeelib/files.html
-
 the library : https://github.com/jeelabs/jeelib
+
+la doc : https://jeelabs.org/pub/docs/jeelib/files.html
 
 ### logiciel gqrx
 
