@@ -1,3 +1,5 @@
+# pilotage des actionneurs d'un circuit de chauffage
+
 On travaille avec un raspberry, pas avec un arduino. 
 
 On n'est pas à la recherche de performances temps réel.
@@ -13,8 +15,6 @@ Il faut avoir installé wiringPi
 ```
 pip3 install wiringpi
 ```
-
-# pilotage des actionneurs d'un circuit de chauffage
 
 ## montage d'une vanne en mode mélange
 
