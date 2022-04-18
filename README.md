@@ -81,6 +81,8 @@ https://hackingathome.com/2017/02/07/danfoss-wireless-thermostat-hacking-part-tw
 
 https://github.com/imax9000/Arduino-PID-Library
 
+https://github.com/br3ttb/Arduino-PID-Library/blob/master/PID_v1.cpp
+
 http://brettbeauregard.com/blog/2011/04/improving-the-beginners-pid-introduction/
 
 https://www.rocketscream.com/blog/
