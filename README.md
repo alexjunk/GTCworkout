@@ -73,7 +73,7 @@ http://madscientistlabs.blogspot.com/search?q=davis
 
 Rfm69 and davis vantage : https://github.com/dekay
 
-https://lowpowerlab.com/shop/product/196
+moteino https://lowpowerlab.com/shop/product/196
 
 ## d'un thermostat de chaudière pour maison individuelle
 
