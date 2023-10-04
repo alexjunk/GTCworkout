@@ -32,6 +32,10 @@ http://sarakha63-domotique.fr/jeedom-domotiser-une-vanne-3-voies/
 
 # produits radio
 
+moteino https://lowpowerlab.com/shop/product/196
+
+https://github.com/jgillula/rpi-rfm69
+
 ## jeelab
 
 https://jeelabs.org/ avec un magasin en ligne : https://www.digitalsmarties.net/
@@ -72,8 +76,6 @@ doc : https://www.rtl-sdr.com/wp-content/uploads/2016/12/ASK_erhard_e_tutorial.p
 http://madscientistlabs.blogspot.com/search?q=davis
 
 Rfm69 and davis vantage : https://github.com/dekay
-
-moteino https://lowpowerlab.com/shop/product/196
 
 ## d'un thermostat de chaudière pour maison individuelle
 
