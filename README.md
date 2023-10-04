@@ -34,6 +34,8 @@ http://sarakha63-domotique.fr/jeedom-domotiser-une-vanne-3-voies/
 
 moteino https://lowpowerlab.com/shop/product/196
 
+https://github.com/LowPowerLab/RFM69
+
 https://github.com/jgillula/rpi-rfm69
 
 ## jeelab
